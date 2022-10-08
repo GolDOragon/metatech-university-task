@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  db:
+    container_name: course_db
+    image: postgres:13.8-alpine
+    restart: always
+    ports:
+      - ${DB_PORT}:5432
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    networks:
+      - postgres
+
+networks:
+  postgres:
+    driver: bridge

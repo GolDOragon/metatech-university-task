@@ -1,0 +1,19 @@
+{
+  "name": "metatech-university-task",
+  "version": "5.0.0",
+  "description": "https://github.com/HowProgrammingWorks/DDD/blob/master/JavaScript/Tasks.md",
+  "license": "MIT",
+  "private": true,
+  "main": "src/main.js",
+  "scripts": {
+    "start": "node .",
+    "db": "docker compose up",
+    "fill-db": "npm run db:copy && npm run db:run",
+    "db:copy": "docker cp ./db course_db:/var/lib/postgresql",
+    "db:run": "docker exec -it course_db sh -c \"cd /var/lib/postgresql/db && ./setup.sh\""
+  },
+  "dependencies": {
+    "pg": "^8.8.0",
+    "ws": "^8.8.1"
+  }
+}
